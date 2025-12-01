@@ -15,6 +15,7 @@ int main() {
     // x*length*width + 2*width*height + 2*height*length
     std::string line;
     int totalSurfaceArea = 0;
+    int totalRibbon = 0;
     while(std::getline(file, line)) {
         std::string s = line;
         int l, w, h;
@@ -23,6 +24,7 @@ int main() {
         ss >> l >> x >> w >> x >> h;
 
         std::vector<int> sides = {l*w, w*h, h*l};
+        
         std::sort(sides.begin(), sides.end());
         int smallestSide = sides[0];
 
@@ -31,7 +33,18 @@ int main() {
         totalSurfaceArea += surfaceArea;
         // Uncomment for testing
         // std::cout << "Length: " << l << " Width: " << w << " Height: " << h << " - Surface: " << surfaceArea << std::endl;
+
+
+        // Part 2
+        int smallest = std::min({l, w, h});
+        int largest = std::max({l, w, h});
+        int middle = l + w + h - smallest - largest;
+        int smallestRibbonSides = smallest + smallest + middle + middle;
+        int presentRibbon = l * w * h;
+        int ribbon = smallestRibbonSides + presentRibbon;
+        totalRibbon += ribbon;
     }
+    std::cout << "Total Ribbon: " << totalRibbon << std::endl;
     std::cout << "Total Surface Area: " << totalSurfaceArea << std::endl;
 
     return 0;
