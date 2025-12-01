@@ -44,8 +44,10 @@ int main() {
         int ribbon = smallestRibbonSides + presentRibbon;
         totalRibbon += ribbon;
     }
-    std::cout << "Total Ribbon: " << totalRibbon << std::endl;
+    // Part 1 output
     std::cout << "Total Surface Area: " << totalSurfaceArea << std::endl;
+    // Part 2 output
+    std::cout << "Total Ribbon: " << totalRibbon << std::endl;
 
     return 0;
 }
